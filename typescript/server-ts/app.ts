@@ -1,17 +1,17 @@
-import  express, { Express, Request, Response } from "express";
+import express, { Express, Request, Response } from "express";
+import usersRouter from "./routes/usersRouter";
+import cors from "cors";
+import moviesRouter from "./routes/moviesRouter";
 
-const app:Express = express();
+const app: Express = express();
 
-
-
-app.get("/", (req: Request, res:Response) => {
-  res.json("hello world!");
+app.use(cors());
+app.use(express.json());
+app.get("/", (req: Request, res: Response) => {
+  res.json("Hello world!");
 });
 
-app.get("/hello", (req: Request, res:Response)=>{
-  res.json("hello world again")
-})
+app.use("/api/users", usersRouter);
+app.use("/api/movies", moviesRouter);
 
 export default app;
-
-
