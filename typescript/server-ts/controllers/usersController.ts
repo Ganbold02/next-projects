@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import UserModel, { IUser } from "../models/userModel";
+import UserModel, { IUser } from "../models/UserModels";
 
 export const countAllUsers = async (req: Request, res: Response) => {
   res.json(await UserModel.count({}));
